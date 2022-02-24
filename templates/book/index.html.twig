@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookController!{% endblock %}
+
+{% block body %}
+    {% for book in books %}
+        <div>
+            <h2>{{ book.title }}</h2>
+            {% if book.status == 0 %}
+            <a href="./borrower/{{ book.id }}">Réserver</a>
+            {% else %}
+            <p>Livre déjà réservé</p>
+            <a href="./return/{{ book.id }}">Rendu</a>
+            {% endif %}
+            <a href="./delete_{{ book.id }}">Delete</a>
+        </div>
+    {% endfor %}
+{% endblock %}
